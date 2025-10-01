@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Test-IA</title>
+</head>
+<body>
+
+  <h1>Bienvenido a Test-IA</h1>
+
+  <form id="ConsultaLink">
+    <label for="ConsultaLink-link">Ingrese un link de un pagina</label>
+    <input type="text" id="ConsultaLink-link" name="ConsultaLink-link" placeholder="http://misitio.com" required>
+    <button type="submit">Enviar link</button>
+  </form> 
+
+  <from id="ConsultaDoc"> 
+    <label for="ConsultaDoc-doc">Cargue un documento para empezar</label>
+    <input type="file" id="ConsultaDoc-doc" name="ConsultaDoc-doc" accept=".pdf, .docx" required>
+    <button type="submit" >Enviar archivo</button>
+  </from>
+  
+</body>
+<script type="module" src="/FrontEnd/Js/ValidacionCampos.js"></script>
+</html>
+
+
