@@ -1,5 +1,7 @@
 export function Resumen(texto){
-    document.getElementById("Resumen").innerText = texto;
+
+    const html = marked.parse(texto);
+    document.getElementById("Resumen").innerHTML = html;
     console.log("El mensaje es esto", texto);
 }
 

@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat de respuesta</title>
+    <link rel="stylesheet" href="./Css/Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <h1>Aqui se mostrara el Resumen</h1>
     <div id="Resumen">
 
     </div>
+    
 </body>
 <script type="module" src="/FrontEnd/Js/MensajesChat.js"></script>
+
+
+<script>
+    // Obtiene el contenido Markdown
+        var markdownText = document.getElementById('Resumen').textContent;
+        
+        // Convierte el Markdown a HTML
+        var html = marked.parse(markdownText);
+        
+        // Muestra el HTML en el div de salida
+        document.getElementById('Resumen').innerHTML = html;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </html>
 
