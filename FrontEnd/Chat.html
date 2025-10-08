@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,49 @@
     <link rel="stylesheet" href="./Css/Style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
-    <h1>Aqui se mostrara el Resumen</h1>
-    <div id="Resumen">
+    <h1 style="text-align: center;">CONSULT AI</h1>
+    <div class="Contendor">
+        <div class="Contendor-Resumen">
+            <h2 style="text-align: center; margin-top: 0;">Resumen de tema enviado</h2>
+            <div id="Resumen">
+
+            </div>
+        </div>
+        <div class="Contendor-chat">
+
+            <main class="messages" id="messages" aria-live="polite"></main>
+
+            <div class="hint">Presiona Enter para enviar · Respuesta: el mismo mensaje en MAYÚSCULAS</div>
+            <p id="estado">Listo</p>
+            <div class="composer">
+                <textarea class="input-chat" id="inputMsg" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje"></textarea>
+                <button id="sendBtn" aria-label="Enviar mensaje">Enviar</button>
+            </div>
+
+        </div>
 
     </div>
-    
+
+
 </body>
+
 <script type="module" src="/FrontEnd/Js/MensajesChat.js"></script>
 
 
 <script>
     // Obtiene el contenido Markdown
-        var markdownText = document.getElementById('Resumen').textContent;
-        
-        // Convierte el Markdown a HTML
-        var html = marked.parse(markdownText);
-        
-        // Muestra el HTML en el div de salida
-        document.getElementById('Resumen').innerHTML = html;
+    var markdownText = document.getElementById('Resumen').textContent;
+
+    var bot_content = document.get
+
+    // Convierte el Markdown a HTML
+    var html = marked.parse(markdownText);
+
+    // Muestra el HTML en el div de salida
+    document.getElementById('Resumen').innerHTML = html;
 </script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </html>
-

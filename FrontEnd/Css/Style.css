@@ -1,6 +1,121 @@
-#Resumen{
-    
+:root {
+    --bg: #0f1724;
+    --panel: #0b1220;
+    --user: #fff;
+    --bot: #111827;
+    --text: #000;
+}
+
+h1{
+    margin: 1.5rem 0 0;
+}
+#Resumen {
+
     overflow: auto;
-    max-height: 30rem;
+    max-height: 33rem;
     max-width: 40rem;
+}
+.Contendor-Resumen{
+    width: 50%;
+    padding: 1.5rem 3rem 0 2rem;
+    margin: 0;
+}
+
+.Contendor-chat {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color: var(--text);
+    
+    padding: 1.5rem 2rem 0 3rem;
+    width: 50%;
+}
+
+.Contendor {
+    display: flex;
+    justify-content: space-around;
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 25rem ;
+}
+
+.hint {
+    font-size: 12px;
+    opacity: .6;
+    padding: 8px 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.02)
+}
+
+.composer {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.composer input[type="text"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: var(--text);
+    outline: none;
+    font-size: 14px
+}
+
+.composer button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    border: none;
+    color: #052022;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.composer button:active {
+    transform: translateY(1px)
+}
+
+.msguser {
+    margin-left: auto;
+    background: linear-gradient(90deg, var(--user), #fff);
+    color: #042022;
+    border-bottom-right-radius: 4px
+}
+
+.msgbot {
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    color: var(--text);
+    border-bottom-left-radius: 4px
+}
+
+.input-chat{
+    width: 80%;
+    height: 3rem;
+    resize: vertical; 
+}
+
+@media (max-width:520px) {
+    .chat-wrap {
+        height: 90vh
+    }
+
+    .msg {
+        max-width: 92%
+    }
+
+    header p {
+        display: none
+    }
 }
