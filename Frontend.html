@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConsultAI - Resumidor con IA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #dce6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #2a2a2a;
+    }
+
+    h1 span {
+      color: #0f3f9e;
+    }
+
+    .container {
+      background: #eaf0fb;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 80%;
+      max-width: 900px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .input-group input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid #b0c4de;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .input-group button {
+      background-color: #99b9ff;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .upload-section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .file-box {
+      border: 2px dashed #b0c4de;
+      border-radius: 12px;
+      background-color: #f4f8ff;
+      width: 40%;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .file-box:hover {
+      background-color: #e3ecfd;
+    }
+
+    .file-box input {
+      display: none;
+    }
+
+    .file-box span {
+      color: #2a2a2a;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .file-box small {
+      color: #6a7b92;
+      font-size: 12px;
+    }
+
+    .description {
+      width: 55%;
+    }
+
+    .description h2 {
+      margin: 0;
+      color: #1c2a5c;
+    }
+
+    .description p {
+      font-size: 15px;
+      color: #2a2a2a;
+      margin-top: 5px;
+    }
+
+    .send-btn {
+      background-color: #99b9ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* SECCIÓN DE RESULTADOS Y CHAT */
+    .output-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 20px;
+    }
+
+    .output, .chat {
+      background: #f4f8ff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 48%;
+    }
+
+    .output h3, .chat h3 {
+      background: #3b4e90;
+      color: #fff;
+      padding: 8px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .output p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .chat-area {
+      margin-top: 10px;
+      min-height: 150px;
+    }
+
+    .chat-question {
+      background-color: #99b9ff;
+      padding: 8px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 5px 0;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .chat-response {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .chat-input {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #b0c4de;
+    }
+
+    .chat-input button {
+      background-color: #99b9ff;
+      border: none;
+      margin-left: 8px;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      margin: 40px 0 20px;
+      color: #6a7b92;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CONSULT<span>AI</span></h1>
+  </header>
+
+  <div class="container">
+    <div class="input-group">
+      <input type="text" id="url1" placeholder="Ingresar URL de la Página web">
+      <button onclick="enviarURL('url1')">Enviar</button>
+    </div>
+    <div class="input-group">
+      <input type="text" id="url2" placeholder="Ingresar URL del Sitio web">
+      <button onclick="enviarURL('url2')">Enviar</button>
+    </div>
+
+    <div class="upload-section">
+      <label class="file-box">
+        <input type="file" id="fileInput" accept=".pdf,.docx,.txt">
+        <span>📎 Elije tu archivo</span>
+        <small>Formatos permitidos: PDF, DOCX, TXT</small>
+      </label>
+
+      <div class="description">
+        <h2>Resumidor con IA</h2>
+        <p>Simplifica sitios web y textos largos en resúmenes claros y exactos al instante con la ayuda de nuestra avanzada inteligencia artificial.</p>
+        <button class="send-btn" onclick="procesarArchivo()">Enviar</button>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div class="output" id="output">
+        <h3>Salida</h3>
+        <p id="resultText">Aquí aparecerá el resumen generado por la IA...</p>
+      </div>
+
+      <div class="chat">
+        <h3>Pregunta y Interactua</h3>
+        <div class="chat-area" id="chatArea"></div>
+        <div class="chat-input">
+          <input type="text" id="pregunta" placeholder="Pregunta">
+          <button onclick="enviarPregunta()">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 ConsultAI - Proyecto Frontend</footer>
+
+  <script>
+    function enviarURL(id) {
+      const url = document.getElementById(id).value;
+      if (url.trim() === '') return alert('Por favor, ingresa una URL válida.');
+      document.getElementById("resultText").innerText = 
+        `Procesando resumen de: ${url}\n(Próximamente se conectará al backend para generar el resumen automáticamente)`;
+    }
+
+    function procesarArchivo() {
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files.length) return alert('Por favor, selecciona un archivo.');
+      const file = fileInput.files[0];
+      document.getElementById("resultText").innerText = 
+        `Archivo "${file.name}" subido correctamente. (Aquí se mostrará el resumen generado una vez conectado al backend).`;
+    }
+
+    function enviarPregunta() {
+      const pregunta = document.getElementById('pregunta').value.trim();
+      if (!pregunta) return;
+
+      const chatArea = document.getElementById('chatArea');
+      const preguntaDiv = document.createElement('div');
+      preguntaDiv.className = 'chat-question';
+      preguntaDiv.textContent = pregunta;
+      chatArea.appendChild(preguntaDiv);
+
+      const respuesta = document.createElement('div');
+      respuesta.className = 'chat-response';
+      respuesta.textContent = 'Procesando respuesta (esto se conectará al backend)...';
+      chatArea.appendChild(respuesta);
+
+      document.getElementById('pregunta').value = '';
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+  </script>
+</body>
+</html>
